@@ -15,3 +15,15 @@ IoT, short for Internet of Things, is just a fancy term for smart devices that c
 In general, email phishing is a demonstrably effective way of infecting the computer - the victim is tricked into either clicking a link that points to a malicious website, or downloading infected attachment. Many times the malicious code is written in such a way that common antivirus software is not able to detect it.
 
 In the case of Mirai, the user doesn’t need to do much beyond leaving the default username and password on a newly installed device unchanged.
+
+## Visualization
+
+In this project, I developed a Python-based virtual machine designed to emulate IoT devices that use weak authentication credentials. The implementation, provided in `telnet_honeypot.py`, functions as a honeypot, allowing adversaries to interact with it as though it were a vulnerable real-world device.
+
+Using a single command such as
+
+`hydra -l admin -p admin telnet://[TELNET_IP]:2323`
+
+(e.g., targeting localhost) an attacker can successfully authenticate to the device. This demonstrates how easily insecure IoT systems can be compromised when default or weak credentials are used.
+
+![](./assets/Screenshot%202025-12-29%20152921.png)
