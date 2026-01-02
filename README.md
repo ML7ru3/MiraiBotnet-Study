@@ -66,3 +66,8 @@ either WinRM is not running
 or the connection is blocked
 
 or something is misconfigured
+
+
+## With real LAB
+![](./assets/with-virtual-box.png)
+![](/assets/auth%20log%20file.png)
