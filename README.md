@@ -27,3 +27,42 @@ Using a single command such as
 (e.g., targeting localhost) an attacker can successfully authenticate to the device. This demonstrates how easily insecure IoT systems can be compromised when default or weak credentials are used.
 
 ![](./assets/Screenshot%202025-12-29%20152921.png)
+
+## Wireshark Capture
+
+![](./assets/wireshark_screenshot.png)
+
+❗ 2️⃣ Repeated TCP SYN + RST on Loopback (Important Part)
+
+You have many packets like:
+
+127.0.0.1 → 127.0.0.1
+5985 → 52459  [SYN]
+then
+52459 → 5985 [RST, ACK]
+
+
+Also IPv6 loopback:
+
+::1 <-> ::1
+
+What it means
+
+Your local machine is trying to open a TCP connection to itself
+
+The target port immediately responds with RST
+
+Wireshark says: TCP Port numbers reused → meaning repeated failed reconnect attempts
+
+Key Port to Notice
+
+Port 5985
+That is Windows Remote Management (WinRM HTTP service).
+
+So something on your PC keeps trying to open a WinRM session to itself, but:
+
+either WinRM is not running
+
+or the connection is blocked
+
+or something is misconfigured
